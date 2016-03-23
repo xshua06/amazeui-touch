@@ -22,8 +22,7 @@ const Modal = React.createClass({
 
   propTypes: {
     classPrefix: React.PropTypes.string,
-    role: React.PropTypes.oneOf(['alert', 'confirm', 'prompt', 'loading',
-      'actions', 'popup']),
+    role: React.PropTypes.oneOf(['alert', 'confirm', 'prompt', 'loading', 'actions', 'popup']),
     title: React.PropTypes.node,
     confirmText: React.PropTypes.string,
     cancelText: React.PropTypes.string,
