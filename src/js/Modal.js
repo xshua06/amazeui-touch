@@ -1,7 +1,7 @@
 /**
  * @see https://github.com/yuanyan/boron
  */
-//test
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
@@ -13,6 +13,8 @@ import TransitionEvents from './utils/TransitionEvents';
 import Button from './Button';
 import Icon from './Icon';
 import Loader from './Loader';
+
+import styles from '../scss/components/_modal.scss'
 
 // MUST be equal to $modal-duration in _modal.scss
 const TRANSITION_TIMEOUT = 300;
