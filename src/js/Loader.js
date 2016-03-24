@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
-import '../scss/components/loader';
+import '../src/scss/components/loader';
 
 const Loader = React.createClass({
   mixins: [ClassNameMixin],

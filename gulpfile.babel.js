@@ -144,7 +144,7 @@ gulp.task('build:pack', () => {
 gulp.task('build', (callback) => {
   runSequence(
     'build:clean',
-    ['style', 'build:babel', 'build:pack',],
+    ['style', 'build:babel', /*'build:pack',*/],
     callback
   );
 });
