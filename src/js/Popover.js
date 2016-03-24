@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import BackdropMixin from './mixins/BackdropMixin';
+import '../src/scss/components/popover.scss';
 
 const Popover = React.createClass({
   mixins: [ClassNameMixin, BackdropMixin],

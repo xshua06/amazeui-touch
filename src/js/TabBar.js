@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
 import Badge from './Badge';
+import '../src/scss/components/tabbar.scss';
 
 // TODO: 默认的选中处理
 let TabBar = React.createClass({

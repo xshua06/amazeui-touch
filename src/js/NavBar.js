@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
+import '../src/scss/components/navbar.scss';
 
 const NavBar = React.createClass({
   mixins: [ClassNameMixin],

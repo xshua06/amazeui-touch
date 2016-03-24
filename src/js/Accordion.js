@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import CollapseMixin from './mixins/CollapseMixin';
 import Icon from './Icon';
+import '../src/scss/components/accordion.scss';
 
 const Accordion = React.createClass({
   mixins: [ClassNameMixin],

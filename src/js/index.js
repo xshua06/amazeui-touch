@@ -34,6 +34,7 @@ export {default as TabBar} from './TabBar';
 export {default as Tabs} from './Tabs';
 export {default as Touchable} from './Touchable';
 export {default as View} from './View';
+import '../src/scss/amazeui.touch.scss';
 
 // Mixins
 export * from './mixins';

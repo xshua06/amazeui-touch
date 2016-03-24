@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
+import '../src/scss/components/grid.scss';
 
 const Grid = React.createClass({
   mixins: [ClassNameMixin],
