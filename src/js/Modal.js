@@ -14,7 +14,7 @@ import Button from './Button';
 import Icon from './Icon';
 import Loader from './Loader';
 
-import styles from '../scss/components/_modal.scss'
+import '../scss/components/modal';
 
 // MUST be equal to $modal-duration in _modal.scss
 const TRANSITION_TIMEOUT = 300;

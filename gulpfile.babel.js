@@ -99,6 +99,12 @@ gulp.task('style:scss', () => {
     .pipe($.if(isProduction, gulp.dest(docsPaths.ksDist)));
 });
 
+gulp.task('scss2', () => {
+  return gulp.src('src/scss/components/*')
+  .pipe($.sass('src/scss/components/*', { outputStyle: 'expanded'}).on('error', $.sass.logError))
+  .pipe(gulp.dest('css/'));
+});
+
 gulp.task('style:fonts', () => {
   return gulp.src(paths.fonts)
     .pipe(gulp.dest(paths.dist + '/fonts'))
@@ -109,8 +115,8 @@ gulp.task('style:watch', () => {
   gulp.watch(paths.scssModules, ['style:scss']);
 });
 
-gulp.task('style', ['style:scss', 'style:fonts']);
-gulp.task('styleDev', ['style:scss', 'style:fonts', 'style:watch']);
+gulp.task('style', ['style:scss', 'scss2', 'style:fonts']);
+gulp.task('styleDev', ['style:scss', 'scss2', 'style:fonts', 'style:watch']);
 
 // transform ES6 & JSX
 gulp.task('build:babel', () => {

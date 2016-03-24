@@ -1,24 +1,15 @@
 // Amaze UI Mobile
+$icon-path: 'fonts/';
 
-// Functions
-@import "helper/functions";
-
-
-// Variables
-@import "variables";
-
-// Mixins
-@import "helper/mixins";
+// Helper
+@import "helper";
 
 // Normalize styles
 @import "vendor/normalize";
 
-// Animation
-@import "helper/animation";
-
 // Base Styles
 @import "base";
-@import "components/typography";
+@import "vendor/typography";
 
 // Components
 @import "components/container";
