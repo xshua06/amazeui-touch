@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 //ENV=production import '../src/scss/components/grid.scss';
 
-const Grid = React.createClass({
+var Grid = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

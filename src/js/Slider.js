@@ -11,7 +11,7 @@ import Icon from './Icon';
 import Touchable from './Touchable';
 //ENV=production import '../src/scss/components/slider.scss';
 
-const Slider = React.createClass({
+var Slider = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 //ENV=production import '../src/scss/components/button-group.scss';
 
-const ButtonGroup = React.createClass({
+var ButtonGroup = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

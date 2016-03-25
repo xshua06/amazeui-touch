@@ -5,7 +5,7 @@ import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 //ENV=production import '../src/scss/components/tabs.scss';
 
-const Tabs = React.createClass({
+var Tabs = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

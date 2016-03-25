@@ -14,7 +14,7 @@ import TouchableMixin from './mixins/TouchableMixin';
 import createChainedFunction from './utils/createChainedFunction';
 import supportTouch from './utils/isTouchSupported';
 
-const Touchable = React.createClass({
+var Touchable = React.createClass({
   mixins: [TouchableMixin],
 
   propTypes: {

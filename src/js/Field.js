@@ -4,7 +4,7 @@ import ClassNameMixin from './mixins/ClassNameMixin';
 import Button from './Button';
 import Icon from './Icon';
 
-const Field = React.createClass({
+var Field = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

@@ -5,7 +5,7 @@ import ClassNameMixin from './mixins/ClassNameMixin';
 import BackdropMixin from './mixins/BackdropMixin';
 //ENV=production import '../src/scss/components/popover.scss';
 
-const Popover = React.createClass({
+var Popover = React.createClass({
   mixins: [ClassNameMixin, BackdropMixin],
 
   propTypes: {

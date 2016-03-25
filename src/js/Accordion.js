@@ -7,7 +7,7 @@ import Icon from './Icon';
 //ENV=production import '../src/scss/components/accordion.scss';
 
 
-const Accordion = React.createClass({
+var Accordion = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

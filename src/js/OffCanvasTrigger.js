@@ -7,7 +7,7 @@ import CSSCore from './utils/CSSCore';
 import TransitionEvents from './utils/TransitionEvents';
 import createChainedFunction from './utils/createChainedFunction';
 
-const OffCanvasTrigger = React.createClass({
+var OffCanvasTrigger = React.createClass({
   mixins: [OverlayMixin, ClassNameMixin],
 
   propTypes: {

@@ -61,7 +61,7 @@ function initScrollable(defaultPos) {
 
 const TRANSITION_TIMEOUT = 500;
 
-let Container = React.createClass({
+var Container = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

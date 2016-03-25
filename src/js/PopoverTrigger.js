@@ -7,7 +7,7 @@ import OverlayMixin from './mixins/OverlayMixin';
 import dom from './utils/domUtils';
 import createChainedFunction from './utils/createChainedFunction';
 
-const PopoverTrigger = React.createClass({
+var PopoverTrigger = React.createClass({
   mixins: [OverlayMixin],
 
   propTypes: {

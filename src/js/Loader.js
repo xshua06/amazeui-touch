@@ -4,7 +4,7 @@ import ClassNameMixin from './mixins/ClassNameMixin';
 
 //ENV=production import '../src/scss/components/loader.scss';
 
-const Loader = React.createClass({
+var Loader = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

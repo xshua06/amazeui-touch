@@ -6,7 +6,7 @@ import Badge from './Badge';
 //ENV=production import '../src/scss/components/tabbar.scss';
 
 // TODO: 默认的选中处理
-let TabBar = React.createClass({
+var TabBar = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

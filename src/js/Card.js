@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 //ENV=production import '../src/scss/components/card.scss';
 
-const Card = React.createClass({
+var Card = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

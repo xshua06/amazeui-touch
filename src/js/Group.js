@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 //ENV=production import '../src/scss/components/group.scss';
 
-let Group = React.createClass({
+var Group = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
-const Col = React.createClass({
+var Col = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 //ENV=production import '../src/scss/components/view.scss';
 
-const View = React.createClass({
+var View = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

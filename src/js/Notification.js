@@ -13,7 +13,7 @@ import Icon from './Icon';
 // be not smooth. It maybe a bug of React.
 const TRANSITION_TIMEOUT = 250;
 
-const Notification = React.createClass({
+var Notification = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {

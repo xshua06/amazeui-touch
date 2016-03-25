@@ -8,7 +8,7 @@ import ClassNameMixin from './mixins/ClassNameMixin';
 import BackdropMixin from './mixins/BackdropMixin';
 //ENV=production import '../src/scss/components/offcanvas.scss';
 
-const OffCanvas = React.createClass({
+var OffCanvas = React.createClass({
   mixins: [ClassNameMixin, BackdropMixin],
 
   propTypes: {

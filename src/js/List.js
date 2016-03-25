@@ -4,7 +4,7 @@ import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
 //ENV=production import '../src/scss/components/list.scss';
 
-const List = React.createClass({
+var List = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
