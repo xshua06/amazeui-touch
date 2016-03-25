@@ -262,4 +262,7 @@ const PopoverTrigger = React.createClass({
   }
 });
 
-export default PopoverTrigger;
+const PopoverTrigger1 = PopoverTrigger;
+export default PopoverTrigger1;
+export var PopoverTrigger = React.createFactory(PopoverTrigger1);
+

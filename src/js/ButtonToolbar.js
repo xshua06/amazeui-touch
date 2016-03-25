@@ -28,5 +28,6 @@ const ButtonToolbar = React.createClass({
     );
   }
 });
-
-export default ButtonToolbar;
+const ButtonToolbar1 = ButtonToolbar;
+export default ButtonToolbar1;
+export var ButtonToolbar = React.createFactory(ButtonToolbar);

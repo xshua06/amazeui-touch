@@ -162,4 +162,8 @@ TabBar.Item = React.createClass({
   }
 });
 
-export default TabBar;
+const TabBar1 = TabBar;
+TabBar1.Item = TabBar.Item;
+export default TabBar1;
+export var TabBar = React.createFactory(TabBar1);
+TabBar.Item = React.createFactory(TabBar1.Item);

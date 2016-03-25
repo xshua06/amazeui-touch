@@ -113,4 +113,9 @@ Card.Child = React.createClass({
   }
 });
 
-export default Card;
+const Card1 = Card;
+Card1.Child = Card.Child;
+
+export default Card1;
+export var Card = React.createFactory(Card1);
+Card.Child = React.createFactory(Card1.Child);

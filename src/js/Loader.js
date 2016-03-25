@@ -42,4 +42,6 @@ const Loader = React.createClass({
   }
 });
 
-export default Loader;
+const Loader1 = Loader;
+export default Loader1;
+export var Loader = React.createFactory(Loader1);

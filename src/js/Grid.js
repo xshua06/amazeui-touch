@@ -21,7 +21,7 @@ const Grid = React.createClass({
     };
   },
 
-  render: function() {
+  render() {
     let classSet = this.getClassSet();
     let {
       component: Component,
@@ -54,4 +54,6 @@ const Grid = React.createClass({
   }
 });
 
-export default Grid;
+const Grid1 = Grid;
+export default Grid1;
+export var Grid = React.createFactory(Grid1);

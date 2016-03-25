@@ -63,4 +63,6 @@ const OffCanvas = React.createClass({
   }
 });
 
-export default OffCanvas;
+const OffCanvas1 = OffCanvas;
+export default OffCanvas1;
+export var OffCanvas = React.createFactory(OffCanvas1);

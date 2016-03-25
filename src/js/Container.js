@@ -183,6 +183,10 @@ let Container = React.createClass({
   }
 });
 
+const Container1 = Container;
+Container1.initScrollable = initScrollable;
+
+export default Container1;
+export var Container = React.createFactory(Container1);
 Container.initScrollable = initScrollable;
 
-export default Container;

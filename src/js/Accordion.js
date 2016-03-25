@@ -163,4 +163,10 @@ Accordion.Item = React.createClass({
   }
 });
 
-export default Accordion;
+const Accordion1 = Accordion;
+Accordion1.Item = Accordion.Item;
+
+export default Accordion1;
+export var Accordion = React.createFactory(Accordion1);
+Accordion.Item = Accordion1.Item;
+

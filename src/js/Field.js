@@ -185,5 +185,6 @@ const Field = React.createClass({
     return this.renderFieldGroup(field);
   }
 });
-
-export default Field;
+const Field1 = Field;
+export default Field1;
+export var Field = React.createFactory(Field1);

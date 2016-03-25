@@ -87,4 +87,6 @@ const Notification = React.createClass({
   }
 });
 
-export default Notification;
+const Notification1 = Notification;
+export default Notification1;
+export var Notification = React.createFactory(Notification1);

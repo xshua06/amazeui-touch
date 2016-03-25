@@ -48,4 +48,7 @@ const Icon = React.createClass({
   }
 });
 
-export default Icon;
+const Icon1 = Icon;
+export default Icon1;
+export var Icon = React.createFactory(Icon1);
+

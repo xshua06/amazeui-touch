@@ -207,4 +207,8 @@ Tabs.Item = React.createClass({
   }
 });
 
-export default Tabs;
+const Tabs1 = Tabs;
+Tabs1.Item = Tabs.Item;
+export default Tabs1;
+export var Tabs = React.createFactory(Tabs1);
+Tabs.Item = React.createFactory(Tabs1.Item);

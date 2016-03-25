@@ -52,4 +52,8 @@ const Col = React.createClass({
   }
 });
 
-export default Col;
+const Col1 = Col;
+export default Col1;
+export var Col = React.createFactory(Col1);
+
+

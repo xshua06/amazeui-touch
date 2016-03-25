@@ -32,4 +32,6 @@ const View = React.createClass({
   },
 });
 
-export default View;
+const View1 = View;
+export default View1;
+export var View = React.createFactory(View1);

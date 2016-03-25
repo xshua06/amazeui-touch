@@ -183,4 +183,6 @@ const OffCanvasTrigger = React.createClass({
   }
 });
 
-export default OffCanvasTrigger;
+const OffCanvasTrigger1 = OffCanvasTrigger;
+export default OffCanvasTrigger1;
+export var OffCanvasTrigger = React.createFactory(OffCanvasTrigger1);

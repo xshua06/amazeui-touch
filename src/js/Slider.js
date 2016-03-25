@@ -404,4 +404,8 @@ Slider.Item = React.createClass({
   }
 });
 
-export default Slider;
+const Slider1 = Slider;
+Slider1.Item = Slider.Item;
+export default Slider1;
+export var Slider = React.createFactory(Slider1);
+Slider.Item = React.createFactory(Slider1.Item);

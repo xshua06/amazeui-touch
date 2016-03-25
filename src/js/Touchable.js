@@ -51,8 +51,10 @@ const Touchable = React.createClass({
   },
 });
 
-export default Touchable;
+const Touchable1 = Touchable;
+export default Touchable1;
 export {TouchableMixin as Mixin};
+export var Touchable = React.createFactory(Touchable1);
 
 // TODO: Mixin 里似乎没必要使用 state 记录事件相关信息
 // TODO: 添加 touch active className

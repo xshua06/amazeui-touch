@@ -60,4 +60,6 @@ let Group = React.createClass({
   }
 });
 
-export default Group;
+const Group1 = Group;
+export default Group1;
+export var Group = React.createFactory(Group1);

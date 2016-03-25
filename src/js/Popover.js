@@ -84,4 +84,6 @@ const Popover = React.createClass({
   }
 });
 
-export default Popover;
+const Popover1 = Popover;
+export default Popover1;
+export var Popover = React.createFactory(Popover1);

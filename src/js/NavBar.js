@@ -113,4 +113,6 @@ const NavBar = React.createClass({
   }
 });
 
-export default NavBar;
+const NavBar1 = NavBar;
+export default NavBar1;
+export var NavBar = React.createFactory(NavBar1);

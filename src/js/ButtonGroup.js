@@ -53,4 +53,6 @@ const ButtonGroup = React.createClass({
   }
 });
 
-export default ButtonGroup;
+const ButtonGroup1 = ButtonGroup;
+export default ButtonGroup1;
+export var ButtonGroup = React.createFactory(ButtonGroup1);

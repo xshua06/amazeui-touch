@@ -43,4 +43,6 @@ const Badge = React.createClass({
   }
 });
 
-export default Badge;
+const Badge1 = Badge;
+export default Badge1;
+export var Badge = React.createFactory(Badge1);

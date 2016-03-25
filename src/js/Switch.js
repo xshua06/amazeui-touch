@@ -46,4 +46,6 @@ const Switch = React.createClass({
   }
 });
 
-export default Switch;
+const Switch1 = Switch;
+export default Switch1;
+export var Switch = React.createFactory(Switch1);

@@ -192,8 +192,11 @@ List.Item = React.createClass({
     );
   }
 });
-
-export default List;
+const List1 = List;
+List1.Item = List.Item;
+export default List1;
+export var List = React.createFactory(List1);
+List.Item = React.createFactory(List1.Item);
 
 /**
  * TODO:

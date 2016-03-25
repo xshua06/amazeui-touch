@@ -396,5 +396,6 @@ const Modal = React.createClass({
     return this.renderBackdrop(modal);
   }
 });
-
-export default Modal;
+const Modal1 = Modal;
+export default Modal1;
+export var Modal = React.createFactory(Modal1);

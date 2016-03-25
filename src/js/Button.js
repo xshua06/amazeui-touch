@@ -85,4 +85,8 @@ const Button = React.createClass({
   }
 });
 
-export default Button;
+const Button1 = Button;
+export default Button1;
+export var Button = React.createFactory(Button1);
+
+
