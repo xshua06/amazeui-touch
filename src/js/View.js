@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
-import '../src/scss/components/view.scss';
+//ENV=production import '../src/scss/components/view.scss';
 
 const View = React.createClass({
   mixins: [ClassNameMixin],

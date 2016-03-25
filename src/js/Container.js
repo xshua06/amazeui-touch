@@ -5,7 +5,7 @@ import React from 'react';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
-import '../src/scss/components/container.scss';
+//ENV=production import '../src/scss/components/container.scss';
 
 function hasChildrenWithVerticalFill(children) {
   let result = false;

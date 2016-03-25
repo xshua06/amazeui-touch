@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
-import '../src/scss/components/switch.scss';
+//ENV=production import '../src/scss/components/switch.scss';
 
 const Switch = React.createClass({
   mixins: [ClassNameMixin],

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
-import '../src/scss/components/tabs.scss';
+//ENV=production import '../src/scss/components/tabs.scss';
 
 const Tabs = React.createClass({
   mixins: [ClassNameMixin],

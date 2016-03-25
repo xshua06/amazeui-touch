@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
-import '../src/scss/components/notification.scss';
+//ENV=production import '../src/scss/components/notification.scss';
 
 // @see https://facebook.github.io/react/blog/2015/09/10/react-v0.14-rc1.html
 // To improve reliability, CSSTransitionGroup will no longer listen to

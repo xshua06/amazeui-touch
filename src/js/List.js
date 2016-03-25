@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
-import '../src/scss/components/list.scss';
+//ENV=production import '../src/scss/components/list.scss';
 
 const List = React.createClass({
   mixins: [ClassNameMixin],

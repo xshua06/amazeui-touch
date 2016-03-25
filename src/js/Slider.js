@@ -9,7 +9,7 @@ import ClassNameMixin from './mixins/ClassNameMixin';
 import TransitionEvents from './utils/TransitionEvents';
 import Icon from './Icon';
 import Touchable from './Touchable';
-import '../src/scss/components/slider.scss';
+//ENV=production import '../src/scss/components/slider.scss';
 
 const Slider = React.createClass({
   mixins: [ClassNameMixin],

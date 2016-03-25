@@ -1,7 +1,7 @@
 import React, {cloneElement} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
-import '../src/scss/components/button-group.scss';
+//ENV=production import '../src/scss/components/button-group.scss';
 
 const ButtonGroup = React.createClass({
   mixins: [ClassNameMixin],

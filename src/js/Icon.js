@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
-import '../src/scss/components/icon.scss';
+//ENV=production import '../src/scss/components/icon.scss';
 
 const Icon = React.createClass({
   mixins: [ClassNameMixin],

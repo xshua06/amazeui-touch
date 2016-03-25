@@ -17,6 +17,7 @@ import buffer from'vinyl-buffer';
 import merge from 'merge-stream';
 import markedify from 'markedify';
 import BS from 'browser-sync';
+import rename from 'gulp-rename';
 import pkg from './package.json';
 import getMarked from './docs/_utils/getMarked';
 
@@ -61,6 +62,12 @@ const autoprefixerOptions = {
 
 const replaceVersion = function() {
   return $.replace('__VERSION__', pkg.version);
+};
+
+const replaceVersion1 = function() {
+  if(isProduction){
+    return $.replace('//ENV=production', '');
+  }
 };
 
 const addBanner = function() {
@@ -115,13 +122,14 @@ gulp.task('style:watch', () => {
   gulp.watch(paths.scssModules, ['style:scss']);
 });
 
-gulp.task('style', ['style:scss', 'scss2', 'style:fonts']);
-gulp.task('styleDev', ['style:scss', 'scss2', 'style:fonts', 'style:watch']);
+gulp.task('style', ['style:scss', 'style:fonts']);
+gulp.task('styleDev', ['style:scss', 'style:fonts', 'style:watch']);
 
 // transform ES6 & JSX
 gulp.task('build:babel', () => {
   return gulp.src('src/js/**/*')
     .pipe(replaceVersion())
+    .pipe(replaceVersion1())
     .pipe($.babel())
     .pipe(gulp.dest('lib'));
 });
@@ -144,7 +152,7 @@ gulp.task('build:pack', () => {
 gulp.task('build', (callback) => {
   runSequence(
     'build:clean',
-    ['style', 'build:babel', /*'build:pack',*/],
+    ['style', 'build:babel', 'build:pack',],
     callback
   );
 });
