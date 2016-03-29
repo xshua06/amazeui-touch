@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 //ENV=production import '../src/scss/components/card.scss';
 
-var Card = React.createClass({
+var Card1 = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
@@ -24,8 +24,8 @@ var Card = React.createClass({
       return null;
     }
 
-    return (element.type && element.type === Card.Child) ?
-      element : <Card.Child role={role}>{element}</Card.Child>;
+    return (element.type && element.type === Card1.Child) ?
+      element : <Card1.Child role={role}>{element}</Card1.Child>;
   },
 
   renderTitle(title) {
@@ -65,7 +65,7 @@ var Card = React.createClass({
   }
 });
 
-Card.Child = React.createClass({
+Card1.Child = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
@@ -112,9 +112,6 @@ Card.Child = React.createClass({
     );
   }
 });
-
-const Card1 = Card;
-Card1.Child = Card.Child;
 
 export default Card1;
 export var Card = React.createFactory(Card1);

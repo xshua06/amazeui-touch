@@ -30,6 +30,7 @@
   height: $navbar-height;
   padding: $navbar-padding;
   line-height: $navbar-line-height;
+  font-size: $navbar-font-size;
 
   @include navbar-colors($navbar-background, $navbar-color, false);
   // @include retina-border-bottom(darken($navbar-background, 8));

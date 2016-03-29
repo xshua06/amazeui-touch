@@ -5,7 +5,7 @@ import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 //ENV=production import '../src/scss/components/tabs.scss';
 
-var Tabs = React.createClass({
+var Tabs1 = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
@@ -129,13 +129,13 @@ var Tabs = React.createClass({
       }
 
       return (
-        <Tabs.Item
+        <Tabs1.Item
           active={eventKey === activeKey}
           enventKey={eventKey}
           key={key ? key : 'tabPanel' + index}
         >
           {children}
-        </Tabs.Item>
+        </Tabs1.Item>
       );
     });
 
@@ -167,7 +167,7 @@ var Tabs = React.createClass({
   }
 });
 
-Tabs.Item = React.createClass({
+Tabs1.Item = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
@@ -207,8 +207,6 @@ Tabs.Item = React.createClass({
   }
 });
 
-const Tabs1 = Tabs;
-Tabs1.Item = Tabs.Item;
 export default Tabs1;
 export var Tabs = React.createFactory(Tabs1);
 Tabs.Item = React.createFactory(Tabs1.Item);

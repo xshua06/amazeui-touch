@@ -4,7 +4,7 @@
 // Output
 // -----------------------------------------------------------------------------
 .#{$button-group-prefix} {
-  margin: 0 0 1rem;
+  margin: 0 0 rem-calc(16);
   list-style-type: none;
   display: inline-flex;
   overflow: hidden;

@@ -29,7 +29,7 @@
 //
 // @return A number in rems, calculated based on the given value and the base pixel value.
 @function to-rem($value, $base-value: $rem-base)  {
-  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  $value: 2 * strip-unit($value) / strip-unit($base-value) * 1rem;
   @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
   @return $value;
 }

@@ -40,6 +40,7 @@
   padding: rem-calc(10) $global-spacing;
   font-weight: normal;
   cursor: pointer;
+  font-size: $font-size-default;
 
   &:active {
     background: $gray-lighter;
