@@ -9,8 +9,8 @@
 // Set classes namespace, e.g. `am-`
 $namespace: null !default;
 
-// This sets 1rem to be 75px
-$rem-base: 75px;
+// This sets 1rem to be 40px
+$rem-base: 16px;
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
@@ -93,8 +93,8 @@ $am-radius: (
 );
 
 // Default spacing
-$global-padding: .21rem !default;
-$global-margin: .21rem !default;
+$global-padding: rem-calc(16) !default;
+$global-margin: rem-calc(16) !default;
 $global-spacing: rem-calc(15) !default;
 
 // Font-families
@@ -136,7 +136,7 @@ $accordion-border: 1px solid #eee !default;
 // Badge Variables
 // -----------------------------------------------------------------------------
 $badge-prefix: #{$namespace}badge !default;
-$badge-fontsize: .34rem !default;
+$badge-fontsize: rem-calc(12.8) !default;
 $badge-padding: ($global-padding / 3) ($global-padding / 2) !default;
 $badge-radius: 0 !default;
 $badge-background: $light-alt !default;
@@ -182,8 +182,8 @@ $container-prefix: #{$namespace}container !default;
 $form-prefix: #{$namespace}form;
 $field-prefix: #{$namespace}field;
 
-$form-fontsize: .42rem !default;
-$form-padding: 0.32rem 0.21rem !default;
+$form-fontsize: rem-calc(16) !default;
+$form-padding: rem-calc(12) rem-calc(8) !default;
 
 // Text fields
 $text-field-selectors: 'input[type="text"],
@@ -214,8 +214,8 @@ $text-field-border-focus: #999 !default;
 $text-field-cursor-disabled: not-allowed !default;
 
 // Labels
-$form-label-fontsize: .42rem !default;
-$form-label-margin: 0.21rem !default;
+$form-label-fontsize: rem-calc(16) !default;
+$form-label-margin: rem-calc(8) !default;
 $form-label-color: #333 !default;
 
 // Select
@@ -257,7 +257,7 @@ $group-header-font-size: $font-size-sm !default;
   // Icon Variables
 // -----------------------------------------------------------------------------
 $icon-prefix: #{$namespace}icon;
-$icon-path: '../../fonts/'!default;
+$icon-path: 'fonts/';
 $icons: (
   back: \e80a,
   bars: \e80e,
@@ -351,8 +351,8 @@ $navbar-side-width: (100% - $navbar-center-width) / 2 !default;
 $navbar-background: $gray-lighter !default;
 $navbar-color: $gray-dark !default;
 $navbar-padding: 0 rem-calc(10) !default;
-$navbar-line-height: rem-calc($navbar-height-px);
-$navbar-font-size: rem-calc(16);
+$navbar-line-height: rem-calc($navbar-height-px - 1);
+
 
 // Notification Variables
 // -----------------------------------------------------------------------------
@@ -438,7 +438,7 @@ $h6-font-size: rem-calc(14) !default;
 
 // Paragraph
 // We use these to style paragraphs
-$paragraph-font-size: $font-size-default !default;
+$paragraph-font-size: rem-calc(16) !default;
 $paragraph-line-height: 1.6 !default;
 
 // Lists

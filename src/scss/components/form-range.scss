@@ -7,9 +7,9 @@
 // Variables
 // -----------------------------------------------------------------------------
 $range-background: #ddd !default;
-$range-height: 1rem !default;
+$range-height: rem-calc(16) !default;
 $range-radius: 0px !default;
-$range-thumb-height: 1.5rem !default;
+$range-thumb-height: rem-calc(24) !default;
 $range-thumb-color: $global-primary !default;
 $range-thumb-radius: 0px !default;
 

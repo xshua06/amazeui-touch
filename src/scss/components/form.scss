@@ -165,7 +165,7 @@ select {
 textarea {
   height: auto;
   width: 100%;
-  min-height: 5rem;
+  min-height: rem-calc(80);
   resize: vertical;
 }
 

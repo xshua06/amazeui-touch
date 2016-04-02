@@ -43,7 +43,7 @@
   width: 100%;
   height: $tabbar-height;
   padding: 0 $tabbar-padding-horizontal;
-
+  font-size: rem-calc(16);
   @include tabbar-style();
   @include tabbar-link-color();
   // @include retina-border-top(darken($badge-background, 8));
@@ -85,7 +85,7 @@
   @extend .#{$namespace}text-truncate;
 
   .#{$icon-prefix} ~ & {
-    font-size: rem-calc(10);
+    font-size: rem-calc(12);
   }
 }
 

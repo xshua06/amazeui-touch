@@ -2,10 +2,6 @@
 <html>
 <head lang="en">
   <meta http-equiv="X-UA-Compatible">
-<!--
-  <meta name="viewport"
-        content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-         -->
   <meta charset="UTF-8">
   <title>Amaze UI Touch</title>
   <meta name="format-detection" content="telephone=no">
@@ -59,15 +55,75 @@
 
   </style>
   <script>
-    ;(function(win, lib) {
+    ;(function(win) {
+
       var doc = win.document;
       var docEl = doc.documentElement;
       var metaEl = doc.querySelector('meta[name="viewport"]');
       var flexibleEl = doc.querySelector('meta[name="flexible"]');
       var dpr = 0;
       var scale = 0;
-      var tid;
-      var flexible = lib.flexible || (lib.flexible = {});
+      var tid, grid;
+      win.flexible = {};
+
+      // ============
+
+      var updateLayoutRect;
+      // w18 * h32
+      function Grid(){
+        this.opts = {
+          columns: 18,
+          rows: 32
+        };
+        this.updateLayoutRect();
+      }
+
+      // 更新布局窗口
+      Grid.prototype.updateLayoutRect = function(){
+
+        var rect = docEl.getBoundingClientRect();
+        // 视窗宽高
+        var viewW = rect.width;
+        var viewH = rect.height;
+
+        var w = this.opts.columns / this.opts.rows * viewH;
+        var h = viewW * this.opts.rows / this.opts.columns;
+
+        if(w <=  viewW){
+          h = viewH;
+        }else{
+          if(h <= viewH){
+            w = viewW;
+          }
+        }
+
+        // 网格宽高
+        this.size = w/this.opts.columns;
+
+        // 基准值
+        this.rem = this.size;
+        flexible.rem = this.rem;
+
+        // 视窗宽高
+        flexible.viewWidth = this.viewWidth = viewW/this.size;
+        flexible.viewHeight = this.viewHeight = viewH/this.size;
+
+        // 布局窗口宽高
+        flexible.layoutWidth = this.layoutWidth = this.opts.columns;
+        flexible.layoutHeight = this.layoutHeight = this.opts.rows;
+
+        // 布局窗口各边距离视窗对应边的距离
+        flexible.edgeColumn = this.edgeColumn = (viewH - h)/this.size/2;
+        flexible.edgeRow = this.edgeRow = (viewW - w)/this.size/2;
+
+        // 设置基准值
+        docEl.style.fontSize = this.rem + 'px';
+
+      }
+
+      grid = new Grid();
+      updateLayoutRect = grid.updateLayoutRect.bind(grid);
+      // ===============
 
       if (metaEl) {
         console.warn('将根据已有的meta标签来设置缩放比例');
@@ -126,24 +182,14 @@
         }
       }
 
-      function refreshRem(){
-        var width = docEl.getBoundingClientRect().width;
-        if (width / dpr > 540) {
-            width = 540 * dpr;
-        }
-        var rem = width / 10;
-        docEl.style.fontSize = rem + 'px';
-        flexible.rem = win.rem = rem;
-      }
-
       win.addEventListener('resize', function() {
         clearTimeout(tid);
-        tid = setTimeout(refreshRem, 300);
+        tid = setTimeout(updateLayoutRect, 300);
       }, false);
       win.addEventListener('pageshow', function(e) {
         if (e.persisted) {
             clearTimeout(tid);
-            tid = setTimeout(refreshRem, 300);
+            tid = setTimeout(updateLayoutRect, 300);
         }
       }, false);
 
@@ -155,10 +201,8 @@
         }, false);
       }
 
-      refreshRem();
-
-      flexible.dpr = win.dpr = dpr;
-      flexible.refreshRem = refreshRem;
+      flexible.dpr = dpr;
+      flexible.updateLayoutRect = updateLayoutRect;
       flexible.rem2px = function(d) {
         var val = parseFloat(d) * this.rem;
         if (typeof d === 'string' && d.match(/rem$/)) {
@@ -174,7 +218,7 @@
         return val;
       }
 
-    })(window, window['lib'] || (window['lib'] = {}));
+    })(window);
   </script>
 </head>
 <body>

@@ -11,14 +11,14 @@
   text-align: center;
 
   > div {
-    width: 16px;
-    height: 16px;
+    width: rem-calc(16);
+    height: rem-calc(16);
     background-color: #888;
     display: inline-block;
     animation: amt-bouncedelay 1.4s infinite ease-in-out both;
 
     + div {
-      margin-left: 5px;
+      margin-left: rem-calc(5);
     }
   }
 

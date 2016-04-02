@@ -4,7 +4,7 @@
 @import "../helper";
 // variables
 // -----------------------------------------------------------------------------
-$meter-height: 1.5rem !default;
+$meter-height: rem-calc(24) !default;
 $meter-background: #ddd !default;
 $meter-fill: $global-primary !default;
 $meter-fill-high: $global-success !default;
@@ -22,7 +22,7 @@ progress, meter {
   display: block;
   width: 100%;
   height: $meter-height;
-  margin-bottom: 1rem;
+  margin-bottom: rem-calc(16);
 
   @if hasValue($meter-radius) {
     border-radius: $meter-radius;

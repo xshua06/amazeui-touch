@@ -37,7 +37,7 @@
   white-space: nowrap;
   display: inline-block;
   cursor: default;
-  min-width: .32rem;
+  min-width: rem-calc(24);
 
   @include badge-layout($fontsize, $padding);
   @include badge-style($background, $color, $radius);
