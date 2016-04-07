@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/amazeui/amazeui-touch.git"
+    "url": "https://github.com/xshua06/amazeui-touch.git"
   },
   "keywords": [
     "amazeui",
@@ -28,9 +28,9 @@
   "author": "AllMobilize Inc.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/amazeui/amazeui-touch/issues"
+    "url": "https://github.com/xshua06/amazeui-touch/issues"
   },
-  "homepage": "https://github.com/amazeui/amazeui-touch#readme",
+  "homepage": "https://github.com/xshua06/amazeui-touch#readme",
   "devDependencies": {
     "babel-core": "^6.7.0",
     "babel-eslint": "^5.0.0",
