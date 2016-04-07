@@ -23,14 +23,14 @@ var Notification = React.createClass({
     closeBtn: React.PropTypes.bool,
     animated: React.PropTypes.bool,
     visible: React.PropTypes.bool,
-    onDismiss: React.PropTypes.func,
+    onClose: React.PropTypes.func,
   },
 
   getDefaultProps() {
     return {
       classPrefix: 'notification',
       closeBtn: true,
-      onDismiss: () => {},
+      onClose: () => {},
     };
   },
 
@@ -39,7 +39,7 @@ var Notification = React.createClass({
       <Icon
         className={this.prefixClass('icon')}
         name="close"
-        onClick={this.props.onDismiss}
+        onClick={this.props.onClose}
       />
     ) : null;
   },

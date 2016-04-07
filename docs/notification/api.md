@@ -46,7 +46,7 @@
 
 通知栏是否可见，使用时 `visible` 为 `true` 打开通知，否则关闭。
 
-##### `onDismiss`
+##### `onClose`
 
 > PropType: `func`
 
