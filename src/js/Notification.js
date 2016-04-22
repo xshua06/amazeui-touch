@@ -13,6 +13,61 @@ import Icon from './Icon';
 // be not smooth. It maybe a bug of React.
 const TRANSITION_TIMEOUT = 250;
 
+var TransItem = React.createClass({
+
+  componentDidMount(){
+    let { onWillAppear, onAppear, } = this.props;
+    if(onWillAppear){
+      onWillAppear()
+    }
+    if(onAppear){
+      onAppear()
+    }
+  },
+
+  componentDidUpdate(){
+    let { onWillEnter, onEnter, onWillLeave } = this.props;
+    if(onWillEnter){
+      onWillEnter()
+    }
+    if(onEnter){
+      onEnter()
+    }
+    if(onWillLeave){
+      onWillLeave()
+    }
+  },
+
+  componentWillUnmount(){
+    let { onLeave, } = this.props;
+    if(onLeave){
+      onLeave()
+    }
+  },
+
+  render(){
+    let {
+      children,
+      onWillLeave,
+      onLeave,
+
+      onWillEnter,
+      onEnter,
+
+      onWillAppear,
+      onAppear,
+
+      ...other
+    } = this.props;
+    return (
+      <div
+        {...other}
+      >
+        {children}
+      </div>
+    )
+  }
+});
 var Notification = React.createClass({
   mixins: [ClassNameMixin],
 
@@ -101,7 +156,7 @@ var Notification = React.createClass({
 
     let child = this.state.child;
     let notificationBar= visible ? (
-        <div
+        <TransItem
           {...props}
           className={classNames(classSet, className)}
           key={ "notification" + (child && child.key || child) }
@@ -115,7 +170,8 @@ var Notification = React.createClass({
             { childsLen > 1 ? child : children }
           </div>
           {this.renderCloseBtn()}
-        </div>
+        </TransItem>
+
       ) : null;
 
     let anim = (
