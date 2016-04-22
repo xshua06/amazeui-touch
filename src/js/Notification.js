@@ -26,12 +26,49 @@ var Notification = React.createClass({
     onClose: React.PropTypes.func,
   },
 
+  componentDidMount() {
+    let {children} = this.props;
+    let childs = React.Children.toArray(children);
+    this.loopPlay( childs, this.props );
+  },
+
+  componentWillReceiveProps(newProps) {
+    let {children, visible} = newProps;
+    let childs = React.Children.toArray(children);
+    clearTimeout(this.loopPlayId);
+    this.loopPlay( childs, newProps );
+  },
+
+  loopPlay(childs = [], props) {
+    let index = 0;
+    let len = childs.length;
+    let loop = ()=>{
+      let {visible} = props;
+      if(visible && len > 1){
+        this.setState({ child: childs[index] });
+        index++;
+        if(index === len){
+          index = 0;
+        }
+        this.loopPlayId = setTimeout( loop, 3000);
+      }
+    }
+
+    loop();
+  },
+
   getDefaultProps() {
     return {
       classPrefix: 'notification',
       closeBtn: true,
       onClose: () => {},
     };
+  },
+
+  getInitialState() {
+    return {
+      child: null
+    }
   },
 
   renderCloseBtn() {
@@ -51,39 +88,49 @@ var Notification = React.createClass({
       className,
       animated,
       visible,
+      children,
       ...props
-      } = this.props;
+    } = this.props;
+
+    let childs = React.Children.toArray(children);
+    let childsLen = childs.length;
+
+    if(!childsLen) return null;
 
     classSet[this.prefixClass('animated')] = animated;
 
-    let notificationBar = visible ? (
-      <div
-        {...props}
-        className={classNames(classSet, className)}
-        key="notification"
-      >
-        <div className={this.prefixClass('content')}>
-          {title ? (
-            <h3 className={this.prefixClass('title')}>
-              {title}
-            </h3>
-          ) : null}
-          {this.props.children}
+    let child = this.state.child;
+    let notificationBar= visible ? (
+        <div
+          {...props}
+          className={classNames(classSet, className)}
+          key={ "notification" + (child && child.key || child) }
+        >
+          <div className={this.prefixClass('content')}>
+            {title ? (
+              <h3 className={this.prefixClass('title')}>
+                {title}
+              </h3>
+            ) : null}
+            { childsLen > 1 ? child : children }
+          </div>
+          {this.renderCloseBtn()}
         </div>
-        {this.renderCloseBtn()}
-      </div>
-    ) : null;
+      ) : null;
 
-    return animated ? (
+    let anim = (
       <CSSTransitionGroup
         component="div"
+        className={classNames({"notification-loop": visible && childsLen > 1, "notification-single": !visible || childsLen == 1})}
         transitionName="notification"
         transitionEnterTimeout={TRANSITION_TIMEOUT}
         transitionLeaveTimeout={TRANSITION_TIMEOUT}
       >
-        {notificationBar}
+        { notificationBar }
       </CSSTransitionGroup>
-    ) : notificationBar;
+    );
+
+    return animated ? anim : (<div className="notification-noanim">{ notificationBar }</div>);
   }
 });
 
