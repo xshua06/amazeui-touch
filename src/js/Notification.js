@@ -79,37 +79,86 @@ var Notification = React.createClass({
     animated: React.PropTypes.bool,
     visible: React.PropTypes.bool,
     onClose: React.PropTypes.func,
+    message: React.PropTypes.array,
+    duration: React.PropTypes.number,
   },
 
   componentDidMount() {
-    let {children} = this.props;
-    let childs = React.Children.toArray(children);
-    this.loopPlay( childs, this.props );
+    this.loopPlay();
   },
 
   componentWillReceiveProps(newProps) {
-    let {children, visible} = newProps;
-    let childs = React.Children.toArray(children);
     clearTimeout(this.loopPlayId);
-    this.loopPlay( childs, newProps );
+    let {message, visible} = newProps;
+    message = message.slice();
+    this.setState({message, visible});
+    this.loopPlay(newProps);
   },
 
-  loopPlay(childs = [], props) {
-    let index = 0;
-    let len = childs.length;
+  loopPlay(props) {
+    let _this = this;
+    _this.last = false;
     let loop = ()=>{
-      let {visible} = props;
-      if(visible && len > 1){
-        this.setState({ child: childs[index] });
-        index++;
-        if(index === len){
-          index = 0;
-        }
-        this.loopPlayId = setTimeout( loop, 3000);
-      }
-    }
+      let { duration } = _this.props;
+      let {message, index, visible} = _this.state;
+      let msg, msgLen;
 
-    loop();
+      // 如果隐藏掉，不处理
+      if(!visible) return;
+      message = message.slice();
+      msg = message[index];
+      if(msg){
+        if(msg.timeout){
+          message.splice(index, 1);
+        }else{
+          // 下一信息index
+          index++;
+        }
+      }
+      msgLen = message.length;
+
+      // 如果删除timeout>0的信息后还有信息，则进行轮播
+      if(msgLen > 0 && index === msgLen){
+        index = 0;
+      }
+
+      if(msg){
+        if(_this.last) return;
+        _this.loopPlayId = setTimeout( loop, msg.timeout || duration);
+        _this.setState({ msg, message, index });
+        if(msg.timeout == 0 && msgLen == 1){
+          _this.last = true;
+        }
+      }else{
+        _this.setState({msg: null, visible: false});
+      }
+    };
+
+    // 获取第一条信息
+    let duration = props ? props.duration : this.props.duration;
+    let message = (props ? props.message : this.state.message).slice();
+    let msgLen = message.length;
+    let index = 0; //this.state.index;
+    if(msgLen > 0){
+      // 获取第一条信息的显示时间
+      let msg = message[index];
+      let timeout = msg.timeout;
+
+      // 根据显示时间
+      // timeout=0，一直显示duration时间但不删除，进行轮播显示;>0显示timeout时间后删除
+      if(timeout){
+        message.splice(index, 1); //删除该条信息
+      }else{
+        if( msgLen > 1) index++;
+      }
+
+      this.setState({index, message, msg});
+
+      // 在timeout 或者 duration 后显示下一信息
+      if( timeout == 0 && msgLen == 1) return;
+      this.loopPlayId = setTimeout( loop, timeout > 0 ? timeout : duration );
+
+    }
   },
 
   getDefaultProps() {
@@ -117,12 +166,21 @@ var Notification = React.createClass({
       classPrefix: 'notification',
       closeBtn: true,
       onClose: () => {},
+      message: [], // [ {content: 'aaaa', timeout: 5000}, {content: 'bbbb', timeout: 5000} ]
+      duration: 3000
     };
   },
 
   getInitialState() {
+    let index   = 0;
+    let {message, visible} = this.props;
+    let msg = null;
+    message = message.slice();
     return {
-      child: null
+      msg,
+      index,
+      message,
+      visible
     }
   },
 
@@ -142,24 +200,21 @@ var Notification = React.createClass({
       title,
       className,
       animated,
-      visible,
       children,
       ...props
     } = this.props;
-
-    let childs = React.Children.toArray(children);
-    let childsLen = childs.length;
-
-    if(!childsLen) return null;
+    let {message,visible} = this.state;
+    let msgLen = message.length;
 
     classSet[this.prefixClass('animated')] = animated;
 
-    let child = this.state.child;
+    let msg = this.state.msg || (msgLen > 0 ? message[0] : null);
+
     let notificationBar= visible ? (
         <TransItem
           {...props}
           className={classNames(classSet, className)}
-          key={ "notification" + (child && child.key || child) }
+          key={ "notification" + (new Date).getTime()}
         >
           <div className={this.prefixClass('content')}>
             {title ? (
@@ -167,7 +222,8 @@ var Notification = React.createClass({
                 {title}
               </h3>
             ) : null}
-            { childsLen > 1 ? child : children }
+            { msg ? msg.content : null }
+            { children }
           </div>
           {this.renderCloseBtn()}
         </TransItem>
@@ -177,7 +233,7 @@ var Notification = React.createClass({
     let anim = (
       <CSSTransitionGroup
         component="div"
-        className={classNames({"notification-loop": visible && childsLen > 1, "notification-single": !visible || childsLen == 1})}
+        className={classNames({"notification-loop": visible && msgLen > 0, "notification-single": !visible || msgLen == 0})}
         transitionName="notification"
         transitionEnterTimeout={TRANSITION_TIMEOUT}
         transitionLeaveTimeout={TRANSITION_TIMEOUT}
