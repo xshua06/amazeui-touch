@@ -87,11 +87,11 @@ var Notification = React.createClass({
     this.loopPlay();
   },
 
-  componentWillReceiveProps(newProps) {
-    let {message, visible, duration} = newProps;
-    message = message.slice();
-    this.setState({message, visible, duration});
-  },
+  // componentWillReceiveProps(newProps) {
+  //   let {message, visible, duration} = newProps;
+  //   message = message.slice();
+  //   this.setState({message, visible, duration});
+  // },
 
   loopPlay(state) {
     clearTimeout(this.loopPlayId);
