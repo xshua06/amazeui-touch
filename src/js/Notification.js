@@ -88,19 +88,17 @@ var Notification = React.createClass({
   },
 
   componentWillReceiveProps(newProps) {
-    clearTimeout(this.loopPlayId);
-    let {message, visible} = newProps;
+    let {message, visible, duration} = newProps;
     message = message.slice();
-    this.setState({message, visible});
-    this.loopPlay(newProps);
+    this.setState({message, visible, duration});
   },
 
-  loopPlay(props) {
+  loopPlay(state) {
+    clearTimeout(this.loopPlayId);
     let _this = this;
     _this.last = false;
     let loop = ()=>{
-      let { duration } = _this.props;
-      let {message, index, visible} = _this.state;
+      let {message, index, visible, duration} = _this.state;
       let msg, msgLen;
 
       // 如果隐藏掉，不处理
@@ -135,8 +133,12 @@ var Notification = React.createClass({
     };
 
     // 获取第一条信息
-    let duration = props ? props.duration : this.props.duration;
-    let message = (props ? props.message : this.state.message).slice();
+    let duration = state ? state.duration : this.state.duration;
+    let message = (state ? state.message : this.state.message).slice();
+    let visible = state ? state.visible : this.state.visible;
+
+    if(!visible) return;
+
     let msgLen = message.length;
     let index = 0; //this.state.index;
     if(msgLen > 0){
@@ -152,12 +154,11 @@ var Notification = React.createClass({
         if( msgLen > 1) index++;
       }
 
-      this.setState({index, message, msg});
+      this.setState({index, message, msg, visible});
 
       // 在timeout 或者 duration 后显示下一信息
       if( timeout == 0 && msgLen == 1) return;
       this.loopPlayId = setTimeout( loop, timeout > 0 ? timeout : duration );
-
     }
   },
 
@@ -173,14 +174,15 @@ var Notification = React.createClass({
 
   getInitialState() {
     let index   = 0;
-    let {message, visible} = this.props;
+    let {message, visible, duration} = this.props;
     let msg = null;
     message = message.slice();
     return {
       msg,
       index,
       message,
-      visible
+      visible,
+      duration,
     }
   },
 
@@ -203,7 +205,7 @@ var Notification = React.createClass({
       children,
       ...props
     } = this.props;
-    let {message,visible} = this.state;
+    let { message, visible } = this.state;
     let msgLen = message.length;
 
     classSet[this.prefixClass('animated')] = animated;
@@ -233,7 +235,7 @@ var Notification = React.createClass({
     let anim = (
       <CSSTransitionGroup
         component="div"
-        className={classNames({"notification-loop": visible && msgLen > 0, "notification-single": !visible || msgLen == 0})}
+        className={classNames({"notification-loop": visible, "notification-single": !visible})}
         transitionName="notification"
         transitionEnterTimeout={TRANSITION_TIMEOUT}
         transitionLeaveTimeout={TRANSITION_TIMEOUT}
