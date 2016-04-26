@@ -133,7 +133,7 @@ var Notification = React.createClass({
     };
 
     // 获取第一条信息
-    let duration = state ? state.duration : this.state.duration;
+    let duration = state.duration || this.state.duration;
     let message = (state ? state.message : this.state.message).slice();
     let visible = state ? state.visible : this.state.visible;
 
