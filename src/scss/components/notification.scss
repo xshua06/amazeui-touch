@@ -79,30 +79,30 @@
   transform-style: preserve-3d;
 }
 .#{$notification-prefix}-enter {
-  transform: scale(1, 0);
+  transform: scaleY(0);
   transform-origin: 50% 0%;
 }
 .#{$notification-prefix}-enter-active {
   transition: all 0.3s ease-in-out;
-  transform: scale(1, 1);
+  transform: scaleY(1);
   transform-origin: 50% 0%;
 }
 
 .#{$notification-prefix}-loop .#{$notification-prefix}-leave {
-  transform: scale(1, 1);
+  transform: scaleY(1);
   transform-origin: 50% 100%;
 }
 .#{$notification-prefix}-loop .#{$notification-prefix}-leave-active {
   transition: all 0.3s ease-in-out;
-  transform: scale(1, 0);
+  transform: scaleY(0);
   transform-origin: 50% 100%;
 }
 .#{$notification-prefix}-single .#{$notification-prefix}-leave {
-  transform: scale(1, 1);
+  transform: scaleY(1);
   transform-origin: 50% 0%;
 }
 .#{$notification-prefix}-single .#{$notification-prefix}-leave-active {
   transition: all 0.3s ease-in-out;
-  transform: scale(1, 0);
+  transform: scaleY(0);
   transform-origin: 50% 0%;
 }
