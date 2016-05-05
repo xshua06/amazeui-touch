@@ -98,7 +98,9 @@ class RcHammer extends Component {
       this.hammer.get("swipe").set({ direction: Hammer.DIRECTION_ALL });
     }
 
-    this._initCustomEvents();
+    if(roles.indexOf(this.props.role) != -1){
+      this._initCustomEvents();
+    }
 
     eventList.forEach( (name) => {
       if(this.props[name]){
@@ -126,7 +128,7 @@ class RcHammer extends Component {
   }
 
   render(){
-    let {component, className, children, onActive, onDisabled, onAfterHandle, onBeforeHandle, ...props} = this.props;
+    let {component, className, children, onActive, onDisabled, onAfterHandle, onBeforeHandle, role, ...props} = this.props;
     let {disabled, actived, active} = this.state;
     props.className = classNames(className, {disabled, actived, active});
     return React.createElement( component, props, children);
