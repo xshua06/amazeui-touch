@@ -143,14 +143,13 @@ var Modal = React.createClass({
       >
         {this.props.children}
         <div className={this.prefixClass('actions-group')}>
-          <RcHammer
-            component="button"
+          <Button
             onTap={this.close}
             block
             amStyle={this.props.btnStyle || 'secondary'}
           >
             {this.props.cancelText}
-          </RcHammer>
+          </Button>
         </div>
       </div>
     );

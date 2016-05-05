@@ -27,18 +27,26 @@ var Icon = React.createClass({
   render() {
     let classSet = this.getClassSet();
     let {
+      component: Component,
       className,
+      href,
       name,
       ...props
       } = this.props;
+    Component = href ? 'a' : Component;
+
+    if(href){
+      props.component = Component;
+      props.href = href;
+    }
 
     // icon-[iconName]
     classSet[this.prefixClass(name)] = true;
 
     return (
       <RcHammer
-        {...props}
         className={classNames(classSet, className)}
+        {...props}
       >
         {this.props.children}
       </RcHammer>

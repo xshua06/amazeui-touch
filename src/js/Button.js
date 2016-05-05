@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
+import RcHammer from './RcHammer';
 //ENV=production import '../src/scss/components/button.scss';
 
 var Button = React.createClass({
@@ -33,20 +34,23 @@ var Button = React.createClass({
       component: Component,
       children,
       ...props
-      } = this.props;
+    } = this.props;
+
     Component = Component || 'a';
 
-    href = href || '#';
+    if(href){
+      props.component = Component;
+      props.href = href;
+    }
 
     return (
-      <Component
-        {...props}
-        href={href}
+      <RcHammer
         className={classes}
         role="button"
+        {...props}
       >
         {children}
-      </Component>
+      </RcHammer>
     );
   },
 
@@ -55,16 +59,16 @@ var Button = React.createClass({
       component: Component,
       children,
       ...props,
-      } = this.props;
+    } = this.props;
     Component = Component || 'button';
-
+    props.component = Component;
     return (
-      <Component
+      <RcHammer
         {...props}
         className={classes}
       >
         {children}
-      </Component>
+      </RcHammer>
     );
   },
 
