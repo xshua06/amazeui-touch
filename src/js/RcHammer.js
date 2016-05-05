@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Hammer from 'hammerjs';
+import classNames from 'classnames';
 
 
 let eventList    = ["hammer.input", "onTap", "onPan", "onPanstart", "onPanmove", "onPanend", "onPancancel", "onPanleft", "onPanright", "onPanup", "onPandown", "onDoubleTap", "onSwipe", "onSwipeleft", "onSwiperight", "onSwipeup", "onSwipedown", "onPress", "onPressup", "onPinch", "onPinchstart", "onPinchmove", "onPinchend", "onPinchcancel", "onPinchin", "onPinchout", "onRotate", "onRotatestart", "onRotatemove", "onRotateend", "onRotatecancel"];
@@ -19,7 +20,7 @@ class RcHammer extends Component {
       role
     } = this.props;
 
-    if(role == 'button' || role == 'link'){
+    if(roles.indexOf(role) != -1){
       this.state = {disabled, actived, active};
     }
   }
@@ -30,7 +31,7 @@ class RcHammer extends Component {
       actived,
       role,
     } = nextProps
-    if(role != "button" && role != 'link'){
+    if(roles.indexOf(role) == -1){
       return;
     }
 
@@ -132,8 +133,9 @@ class RcHammer extends Component {
   }
 
   render(){
-    let {component, children, onActive, onDisabled, onAfterHandle, onBeforeHandle, ...props} = this.props;
-
+    let {component, className, children, onActive, onDisabled, onAfterHandle, onBeforeHandle, ...props} = this.props;
+    let {disabled, actived, active} = this.state;
+    props.className = classNames(className, {disabled, actived, active});
     return React.createElement( component, props, children);
   }
 }
