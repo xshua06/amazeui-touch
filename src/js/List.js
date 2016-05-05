@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
+import RcHammer from './RcHammer';
 //ENV=production import '../src/scss/components/list.scss';
 
 var List = React.createClass({
@@ -30,11 +31,12 @@ var List = React.createClass({
 
     // TODO: 使用 ul 可能不是太好的选择，再一些需要定义 component 的场合缺乏灵活性
     return (
-      <ul
+      <RcHammer
+        component="ul"
         {...props}
         className={classNames(classSet, className)}
       >
-      </ul>
+      </RcHammer>
     );
   }
 });
@@ -73,11 +75,12 @@ List.Item = React.createClass({
       } = this.props;
 
     let itemTitle = title ? (
-      <h3
+      <RcHammer
         key="itemTitle"
+        component="h3"
         className={this.prefixClass('title')}>
         {title}
-      </h3>
+      </RcHammer>
     ) : null;
 
     let titleChildren = [
@@ -93,12 +96,12 @@ List.Item = React.createClass({
     ];
 
     return subTitle ? (
-      <div
+      <RcHammer
         className={this.prefixClass('title-row')}
         key="itemTitleRow"
       >
         {titleChildren}
-      </div>
+      </RcHammer>
     ) : titleChildren;
   },
 
@@ -114,7 +117,7 @@ List.Item = React.createClass({
 
     // remove wrapper if without media/subTitle/children
     return notJustTitle ? (
-      <div
+      <RcHammer
         key="itemMain"
         className={this.prefixClass('main')}
       >
@@ -122,7 +125,7 @@ List.Item = React.createClass({
         {this.renderAddon('subTitle')}
         {this.renderAddon('desc')}
         {children}
-      </div>
+      </RcHammer>
     ) : titleRow;
   },
 
@@ -136,22 +139,23 @@ List.Item = React.createClass({
 
     return linkComponent ?
       React.createElement(linkComponent, linkProps, children) : (
-      <a
+      <RcHammer
+        component="a"
         href={href}
         target={target}
       >
         {children}
-      </a>);
+      </RcHammer>);
   },
 
   renderAddon(type) {
     return this.props[type] ? (
-      <div
+      <RcHammer
         key={'item-' + type}
         className={this.prefixClass(type.toLowerCase())}
       >
         {this.props[type]}
-      </div>
+      </RcHammer>
     ) : null;
   },
 
@@ -182,13 +186,14 @@ List.Item = React.createClass({
     subTitle && (classSet[this.prefixClass('content')] = true);
 
     return (
-      <li
+      <RcHammer
+        component="li"
         {...props}
         className={classNames(classSet, className)}
       >
         {role === 'header' ? children :
           (href || linkComponent) ? this.wrapLink(itemChildren) : itemChildren}
-      </li>
+      </RcHammer>
     );
   }
 });
