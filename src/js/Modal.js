@@ -13,6 +13,7 @@ import TransitionEvents from './utils/TransitionEvents';
 import Button from './Button';
 import Icon from './Icon';
 import Loader from './Loader';
+import RcHammer from './RcHammer';
 
 //ENV=production import '../src/scss/components/modal.scss';
 
@@ -62,7 +63,8 @@ var Modal = React.createClass({
   },
 
   handleBackdropClick(e) {
-    if (e.target !== e.currentTarget || !this.props.closeViaBackdrop) {
+    let selfNode = ReactDOM.findDOMNode(this.refs.backdrop);
+    if (e.target !== selfNode || !this.props.closeViaBackdrop) {
       return;
     }
 
@@ -141,13 +143,14 @@ var Modal = React.createClass({
       >
         {this.props.children}
         <div className={this.prefixClass('actions-group')}>
-          <Button
-            onClick={this.close}
+          <RcHammer
+            component="button"
+            onTap={this.close}
             block
             amStyle={this.props.btnStyle || 'secondary'}
           >
             {this.props.cancelText}
-          </Button>
+          </RcHammer>
         </div>
       </div>
     );
@@ -180,7 +183,7 @@ var Modal = React.createClass({
             <Icon
               name="close"
               className={this.setClassNS('popup-icon')}
-              onClick={this.close}
+              onTap={this.close}
             />
           </div>
           <div className={this.setClassNS('popup-body')}>
@@ -201,7 +204,7 @@ var Modal = React.createClass({
       <Icon
         name="close"
         className={this.prefixClass('icon')}
-        onClick={this.close}
+        onTap={this.close}
       />
     ) : null;
 
@@ -233,26 +236,28 @@ var Modal = React.createClass({
     switch (role) {
       case 'alert':
         buttons = (
-          <span
+          <RcHammer
+            component="span"
             key="modalBtn"
-            onClick={this.handleSelect.bind(this, null)}
+            onTap={this.handleSelect.bind(this, null)}
             className={btnClass}
           >
             {confirmText}
-          </span>);
+          </RcHammer>);
         break;
       case 'confirm':
       case 'prompt':
         let cancel = (role === 'prompt') ? null : false;
         buttons = [cancelText, confirmText].map((text, i) => {
           return (
-            <span
+            <RcHammer
+              component="span"
               key={'modalBtn' + i}
-              onClick={this.handleSelect.bind(this, i === 0 ? cancel : true)}
+              onTap={this.handleSelect.bind(this, i === 0 ? cancel : true)}
               className={btnClass}
             >
               {text}
-            </span>
+            </RcHammer>
           );
         });
         break;
@@ -299,13 +304,13 @@ var Modal = React.createClass({
     return (
       <span>
         {children}
-        <div
+        <RcHammer
           className={classNames(classSet)}
           style={{height: window.innerHeight}}
           ref="backdrop"
-          onClick={onClick}
+          onTap={onClick}
           onTouchMove={preventDefault}
-        ></div>
+        />
       </span>
     );
   },

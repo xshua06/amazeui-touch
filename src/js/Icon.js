@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
+import RcHammer from './RcHammer';
 //ENV=production import '../src/scss/components/icon.scss';
 
 var Icon = React.createClass({
@@ -26,24 +27,21 @@ var Icon = React.createClass({
   render() {
     let classSet = this.getClassSet();
     let {
-      component: Component,
       className,
-      href,
       name,
       ...props
       } = this.props;
-    Component = href ? 'a' : Component;
 
     // icon-[iconName]
     classSet[this.prefixClass(name)] = true;
 
     return (
-      <Component
+      <RcHammer
         {...props}
         className={classNames(classSet, className)}
       >
         {this.props.children}
-      </Component>
+      </RcHammer>
     );
   }
 });
