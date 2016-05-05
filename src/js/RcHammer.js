@@ -98,9 +98,7 @@ class RcHammer extends Component {
       this.hammer.get("swipe").set({ direction: Hammer.DIRECTION_ALL });
     }
 
-    if(this.props.role in roles){
-      this._initCustomEvents();
-    }
+    this._initCustomEvents();
 
     eventList.forEach( (name) => {
       if(this.props[name]){
