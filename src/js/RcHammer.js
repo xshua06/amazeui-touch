@@ -20,9 +20,7 @@ class RcHammer extends Component {
       role
     } = this.props;
 
-    if(roles.indexOf(role) != -1){
-      this.state = {disabled, actived, active};
-    }
+    this.state = {disabled, actived, active};
   }
 
   componentWillReceiveProps(nextProps){
@@ -31,9 +29,6 @@ class RcHammer extends Component {
       actived,
       role,
     } = nextProps
-    if(roles.indexOf(role) == -1){
-      return;
-    }
 
     if(disabled){
       actived = false;
