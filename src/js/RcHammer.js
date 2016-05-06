@@ -130,7 +130,7 @@ class RcHammer extends Component {
   render(){
     let {component, className, children, onActive, onDisabled, onAfterHandle, onBeforeHandle, role, ...props} = this.props;
     let {disabled, actived, active} = this.state;
-    props.className = classNames(className, {disabled, actived, active});
+    props.className = classNames(className, {disabled: disabled, actived: actived && !active, active: !disabled && active});
     return React.createElement( component, props, children);
   }
 }
