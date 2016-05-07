@@ -11,12 +11,16 @@ var Switch = React.createClass({
     name: React.PropTypes.string,
     amStyle: React.PropTypes.string,
     onValueChange: React.PropTypes.func,
+    checked: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
   },
 
   getDefaultProps() {
     return {
       classPrefix: 'switch',
       onValueChange: function() {},
+      checked: false,
+      disabled: false
     };
   },
 
