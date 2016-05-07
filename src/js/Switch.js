@@ -27,6 +27,7 @@ var Switch = React.createClass({
       className,
       onValueChange,
       disabled,
+      checked,
       ...props
       } = this.props;
 
@@ -39,6 +40,7 @@ var Switch = React.createClass({
           onChange={onValueChange.bind(this)}
           name={name}
           disabled={disabled}
+          checked={checked}
           type="checkbox"
           ref="field"
         />
