@@ -43,6 +43,10 @@
       background: $inner-background;
     }
   }
+
+  input:disabled + .#{$switch-prefix}-label{
+    opacity: 0.2!important;
+  }
 }
 
 @mixin switch-label-base() {
