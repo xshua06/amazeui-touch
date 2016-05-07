@@ -38,9 +38,9 @@ var Switch = React.createClass({
         <input
           onChange={onValueChange.bind(this)}
           name={name}
+          disabled={disabled}
           type="checkbox"
           ref="field"
-          disabled
         />
         <span className={this.prefixClass('label')} />
       </label>
