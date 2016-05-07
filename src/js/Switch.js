@@ -26,6 +26,7 @@ var Switch = React.createClass({
       name,
       className,
       onValueChange,
+      disabled,
       ...props
       } = this.props;
 
@@ -39,6 +40,7 @@ var Switch = React.createClass({
           name={name}
           type="checkbox"
           ref="field"
+          disabled
         />
         <span className={this.prefixClass('label')} />
       </label>
