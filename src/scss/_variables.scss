@@ -395,8 +395,8 @@ $slider-caption-color: $white !default;
 // Switch Variables
 // -----------------------------------------------------------------------------
 $switch-prefix: #{$namespace}switch !default;
-$switch-background: #ddd !default;
-$switch-background-active: $global-primary !default;
+$switch-background: rgba(0,0,0,0.1) !default;
+$switch-background-active: #44DB5E !default;
 $switch-inner-background: $white !default;
 $switch-radius: 9999px !default;
 
