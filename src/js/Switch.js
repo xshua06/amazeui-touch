@@ -44,7 +44,7 @@ var Switch = React.createClass({
           onChange={onValueChange.bind(this)}
           name={name}
           disabled={disabled}
-          checked={checked}
+          defaultChecked={checked}
           type="checkbox"
           ref="field"
         />
