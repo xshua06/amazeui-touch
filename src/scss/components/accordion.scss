@@ -3,6 +3,16 @@
 @import "../helper";
 // Output
 // -----------------------------------------------------------------------------
+%card-nested-component {
+  .#{$card-prefix}-body & {
+    margin: unquote(
+            "-" + get-side($card-padding, top) +
+            " -" + get-side($card-padding, right) +
+            " -" + get-side($card-padding, bottom) +
+            " -" + get-side($card-padding, left)
+    );
+  }
+}
 .#{$accordion-prefix} {
   margin: $global-spacing 0;
   border-top: $accordion-border;

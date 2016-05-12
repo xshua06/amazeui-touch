@@ -4,6 +4,14 @@
 // Mixins
 // -----------------------------------------------------------------------------
 
+%text-truncate {
+  @include text-overflow();
+};
+
+.#{$namespace}text-truncate {
+  @extend %text-truncate;
+};
+
 @mixin tabbar-style(
   $background: $tabbar-background
 ) {

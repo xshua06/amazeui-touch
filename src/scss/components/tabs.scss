@@ -3,6 +3,28 @@
 @import "../helper";
 // Output
 // -----------------------------------------------------------------------------
+
+%card-nested-component {
+  .#{$card-prefix}-body & {
+    margin: unquote(
+            "-" + get-side($card-padding, top) +
+            " -" + get-side($card-padding, right) +
+            " -" + get-side($card-padding, bottom) +
+            " -" + get-side($card-padding, left)
+    );
+  }
+};
+
+
+%text-truncate {
+  @include text-overflow();
+};
+
+
+.#{$namespace}text-truncate {
+  @extend %text-truncate;
+};
+
 .#{$tabs-prefix} {
   margin: $global-spacing 0;
   background: $tabs-background;
