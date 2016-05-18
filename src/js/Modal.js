@@ -30,7 +30,7 @@ var Modal = React.createClass({
     confirmText: React.PropTypes.string,
     cancelText: React.PropTypes.string,
     closeBtn: React.PropTypes.bool,
-    actionsMulti: React.PropTypes.bool,
+    isConfirm: React.PropTypes.bool,
     closeViaBackdrop: React.PropTypes.bool,
     onSelect: React.PropTypes.func,
     onOpen: React.PropTypes.func,
@@ -43,7 +43,7 @@ var Modal = React.createClass({
       confirmText: '确定',
       cancelText: '取消',
       closeBtn: true,
-      actionsMulti: false,
+      isConfirm: false,
       onSelect: () => {
       },
       onOpen: () => {
@@ -139,7 +139,7 @@ var Modal = React.createClass({
   renderActions(classSet) {
     classSet[this.props.classPrefix] = false;
     let {
-      actionsMulti
+      isConfirm
     } = this.props;
     return (
       <div
@@ -150,7 +150,7 @@ var Modal = React.createClass({
         {this.props.children}
         <div className={this.prefixClass('actions-group')}>
           <Button
-            onTap={this.close.bind(this, !!actionsMulti)}
+            onTap={this.close.bind(this, !!isConfirm)}
             block
             amStyle={this.props.btnStyle || 'secondary'}
           >
