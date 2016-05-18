@@ -30,6 +30,7 @@ var Modal = React.createClass({
     confirmText: React.PropTypes.string,
     cancelText: React.PropTypes.string,
     closeBtn: React.PropTypes.bool,
+    actionsMulti: React.PropTypes.bool,
     closeViaBackdrop: React.PropTypes.bool,
     onSelect: React.PropTypes.func,
     onOpen: React.PropTypes.func,
@@ -42,6 +43,7 @@ var Modal = React.createClass({
       confirmText: '确定',
       cancelText: '取消',
       closeBtn: true,
+      actionsMulti: false,
       onSelect: () => {
       },
       onOpen: () => {
@@ -68,7 +70,7 @@ var Modal = React.createClass({
       return;
     }
 
-    this.close();
+    this.close(false);
   },
 
   isPopup() {
@@ -114,10 +116,12 @@ var Modal = React.createClass({
     }
   },
 
-  close() {
+  close(canceled) {
     if (this.isClosed() || this.state.isClosing) {
       return;
     }
+
+    this.canceled = canceled;
 
     this.setState({
       isClosing: true
@@ -129,12 +133,14 @@ var Modal = React.createClass({
       closed: true,
       isClosing: false,
     });
-    this.props.onClosed();
+    this.props.onClosed(this.canceled);
   },
 
   renderActions(classSet) {
     classSet[this.props.classPrefix] = false;
-
+    let {
+      actionsMulti
+    } = this.props;
     return (
       <div
         className={classNames(this.props.className, classSet)}
@@ -144,7 +150,7 @@ var Modal = React.createClass({
         {this.props.children}
         <div className={this.prefixClass('actions-group')}>
           <Button
-            onTap={this.close}
+            onTap={this.close.bind(this, !!actionsMulti)}
             block
             amStyle={this.props.btnStyle || 'secondary'}
           >
@@ -182,7 +188,7 @@ var Modal = React.createClass({
             <Icon
               name="close"
               className={this.setClassNS('popup-icon')}
-              onTap={this.close}
+              onTap={this.close.bind(this, false)}
             />
           </div>
           <div className={this.setClassNS('popup-body')}>
@@ -203,7 +209,7 @@ var Modal = React.createClass({
       <Icon
         name="close"
         className={this.prefixClass('icon')}
-        onTap={this.close}
+        onTap={this.close.bind(this, false)}
       />
     ) : null;
 
