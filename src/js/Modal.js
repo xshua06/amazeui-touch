@@ -101,7 +101,7 @@ var Modal = React.createClass({
       data = this.getFieldData();
     }
 
-    this.close();
+    this.close(true);
     this.props.onSelect.call(this, data, e);
   },
 
