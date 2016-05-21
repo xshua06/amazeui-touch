@@ -130,6 +130,10 @@ var Notification = React.createClass({
       }else{
         _this.setState({msg: null, visible: false});
       }
+
+      if(msgLen == 1){
+        _this.isLoop = false;
+      }
     };
 
     // 获取第一条信息
@@ -164,6 +168,8 @@ var Notification = React.createClass({
 
       // 在timeout 或者 duration 后显示下一信息
       if( timeout == 0 && msgLen == 1) return;
+
+      _this.isLoop = true;
       this.loopPlayId = setTimeout( loop, timeout > 0 ? timeout : duration );
     }
   },
