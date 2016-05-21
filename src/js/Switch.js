@@ -24,27 +24,55 @@ var Switch = React.createClass({
     };
   },
 
+  getInitialState() {
+    return {
+      checked: this.props.checked
+    };
+  },
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      checked: nextProps.checked
+    });
+  },
+
+  onValueChange(e){
+    let {
+      onValueChange
+    } = this.props;
+
+    let {
+      checked
+    } = this.state;
+
+    checked = !checked;
+    this.setState({
+      checked
+    }, () => {
+      onValueChange.call(this, checked);
+    });
+  },
+
   render() {
     let classSet = this.getClassSet();
     const {
       name,
       className,
-      onValueChange,
       disabled,
-      checked,
       ...props
       } = this.props;
 
+    let checked = this.state.checked;
     return (
       <label
         {...props}
         className={classNames(classSet, className)}
       >
         <input
-          onChange={onValueChange.bind(this)}
+          onChange={this.onValueChange}
           name={name}
           disabled={disabled}
-          defaultChecked={checked}
+          checked={checked}
           type="checkbox"
           ref="field"
         />
